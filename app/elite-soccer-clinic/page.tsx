@@ -164,71 +164,8 @@ export default function EliteSoccerClinicPage() {
         </div>
       </section>
 
-      {/* DATES */}
-<section className="bg-[#F5F0E6] px-6 py-8 md:py-12">
-  <div className="mx-auto max-w-7xl">
-    <p className="mb-2 text-xs font-black uppercase tracking-[0.3em] text-[#2563EB] md:text-sm">
-      Clinic Dates
-    </p>
+     {/* DATES */}
 
-    <h2 className="mb-6 text-4xl font-black leading-none md:mb-8 md:text-6xl">
-    CLINIC BLOCKS
-      
-    </h2>
-
-    <div className="grid gap-4 md:grid-cols-2">
-      {[
-        ['Week 1', '1st July – 3rd July'],
-        ['Week 2', '8th July – 10th July'],
-      ].map(([week, dates]) => (
-        <div
-          key={week}
-          className="rounded-[2rem] bg-white p-6 shadow-sm md:p-8"
-        >
-          <p className="text-xs font-black uppercase tracking-[0.3em] text-[#2563EB]">
-            {week}
-          </p>
-
-          <h3 className="mt-3 text-3xl font-black md:text-4xl">
-            {dates}
-          </h3>
-
-          <div className="mt-6 grid gap-3">
-            <div className="rounded-2xl bg-[#F5F0E6] p-4">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#2563EB]">
-                Block 1
-              </p>
-
-              <p className="mt-1 text-xl font-black">
-                ⏰ 8:00am – 10:00am
-              </p>
-
-              <p className="mt-1 text-xl font-black">
-                🎂 Ages 11–13
-              </p>
-            </div>
-
-        
-
-            <div className="rounded-2xl bg-[#F5F0E6] p-4">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#2563EB]">
-                Block 2
-              </p>
-
-              <p className="mt-1 text-xl font-black">
-                ⏰ 10:30am – 12:30pm
-              </p>
-
-              <p className="mt-1 text-xl font-black">
-                🎂 Ages 14–16
-              </p>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
 
       {/* PRICING */}
 <section id="pricing" className="bg-[#F5F0E6] px-6 pt-2 pb-10 md:pt-4 md:pb-18">
