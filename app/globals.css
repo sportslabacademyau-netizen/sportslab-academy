@@ -22,3 +22,28 @@ textarea,
 select {
   cursor: text;
 }
+
+/* SPONSOR MARQUEE */
+@keyframes sponsor-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-sponsor-scroll {
+  animation: sponsor-scroll 35s linear infinite;
+  width: max-content;
+}
+
+.sponsor-marquee:hover .animate-sponsor-scroll {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-sponsor-scroll {
+    animation: none;
+  }
+}

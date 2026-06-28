@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Footer from '@/components/Footer'
 import AuthModal from '@/components/AuthModal'
+import SponsorLogos from '@/components/SponsorLogos'
 import { useCart } from '@/context/CartContext'
 import Navbar from '@/components/Navbar'
 import { useAuthSetup } from '@/hooks/useAuthSetup'
@@ -65,6 +66,17 @@ export default function SponsorPage() {
             </a>
           </div>
 
+        </div>
+      </section>
+
+      {/* OUR PARTNERS (renders only once sponsors are added) */}
+      <section className="bg-[#F5F0E6] px-6 pb-10 md:pb-16">
+        <div className="mx-auto max-w-7xl">
+          <SponsorLogos
+            variant="grid"
+            eyebrow="Our Partners"
+            title="PROUDLY SUPPORTED BY"
+          />
         </div>
       </section>
 

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Footer from '@/components/Footer'
 import AuthModal from '@/components/AuthModal'
+import SponsorLogos from '@/components/SponsorLogos'
 import { useCart } from '@/context/CartContext'
 
 export default function MultisportCampPage() {
@@ -586,6 +587,9 @@ export default function MultisportCampPage() {
   </div>
 
 </section>
+
+{/* SPONSORS */}
+<SponsorLogos variant="marquee" eyebrow="Our Partners" />
 
 {/* FINAL CTA */}
 <section className="bg-[#0B0F19] px-6 py-10 text-white md:py-16">

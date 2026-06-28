@@ -77,56 +77,23 @@ export default function MultisportCampPage() {
             foundations, confidence and love for the game.
           </p>
 
-          <div className="mb-10 grid gap-4 sm:grid-cols-2">
+          <div className="mb-10 grid max-w-xl grid-cols-2 gap-3">
+            {[
+              ['Ages', '6 – 12 Years'],
+              ['Location', 'West End'],
+              ['Thursday', '3:30pm – 4:30pm'],
+              ['Sunday', '9:30am – 10:30am'],
+            ].map(([label, value]) => (
+              <div key={label} className="rounded-2xl bg-white p-4 shadow-sm">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#2563EB]">
+                  {label}
+                </p>
 
-            <div className="rounded-2xl bg-white p-6 shadow-sm">
-
-              <p className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-[#2563EB]">
-                Ages
-              </p>
-
-              <h3 className="text-3xl font-black">
-                6 – 12 Years
-              </h3>
-
-            </div>
-
-            <div className="rounded-2xl bg-white p-6 shadow-sm">
-
-              <p className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-[#2563EB]">
-                Location
-              </p>
-
-              <h3 className="text-3xl font-black">
-                West End
-              </h3>
-
-            </div>
-
-            <div className="rounded-2xl bg-white p-6 shadow-sm">
-
-              <p className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-[#2563EB]">
-                Thursday
-              </p>
-
-              <h3 className="text-2xl font-black">
-                3:30pm – 4:30pm
-              </h3>
-
-            </div>
-
-            <div className="rounded-2xl bg-white p-6 shadow-sm">
-
-              <p className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-[#2563EB]">
-                Sunday
-              </p>
-
-              <h3 className="text-2xl font-black">
-                9:30am – 10:30am
-              </h3>
-
-            </div>
-
+                <p className="mt-1 text-lg font-black">
+                  {value}
+                </p>
+              </div>
+            ))}
           </div>
 
           <a
@@ -275,6 +242,10 @@ export default function MultisportCampPage() {
                 1 session per week · 10 sessions
               </p>
 
+              <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-black uppercase tracking-wide text-white">
+                🎽 Free Training Jersey
+              </p>
+
               <button
                 type="button"
                 onClick={() =>
@@ -308,6 +279,10 @@ export default function MultisportCampPage() {
 
               <p className="mt-2 text-sm font-semibold text-blue-100">
                 2 sessions per week · 20 sessions
+              </p>
+
+              <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#2563EB]/15 px-3 py-1 text-xs font-black uppercase tracking-wide text-blue-200">
+                🎽 Free Training Jersey
               </p>
 
               <button
