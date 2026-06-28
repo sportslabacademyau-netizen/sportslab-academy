@@ -245,7 +245,7 @@ export default function MultisportCampPage() {
               </p>
 
               <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-black uppercase tracking-wide text-white">
-                🎽 Training Jersey
+                🎽 Training Jersey Included
               </p>
 
               <div className="grow" />
@@ -286,7 +286,7 @@ export default function MultisportCampPage() {
               </p>
 
               <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#2563EB]/15 px-3 py-1 text-xs font-black uppercase tracking-wide text-blue-200">
-                🎽 Training Jersey
+                🎽 Training Jersey Included
               </p>
 
               <div className="grow" />
