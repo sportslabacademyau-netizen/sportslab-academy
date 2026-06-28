@@ -190,7 +190,7 @@ export default function MultisportCampPage() {
           <div className="mt-5 grid gap-3 md:mt-7 md:grid-cols-3 md:gap-4">
 
             {/* CASUAL PASS */}
-            <div className="rounded-[1.4rem] bg-white/10 p-4 text-white md:rounded-[1.8rem] md:p-7">
+            <div className="flex flex-col rounded-[1.4rem] bg-white/10 p-4 text-white md:rounded-[1.8rem] md:p-7">
               <p className="mb-2 text-[9px] font-black uppercase tracking-[0.28em] text-blue-200 md:text-xs">
                 Casual Pass
               </p>
@@ -202,6 +202,8 @@ export default function MultisportCampPage() {
               <p className="mt-2 text-sm font-semibold text-blue-100">
                 Single session
               </p>
+
+              <div className="grow" />
 
               <button
                 type="button"
@@ -219,7 +221,7 @@ export default function MultisportCampPage() {
             </div>
 
             {/* TERM 3 — 1 SESSION/WEEK */}
-            <div className="relative rounded-[1.4rem] bg-[#2563EB] p-4 text-white md:rounded-[1.8rem] md:p-7">
+            <div className="relative flex flex-col rounded-[1.4rem] bg-[#2563EB] p-4 text-white md:rounded-[1.8rem] md:p-7">
               <div className="absolute right-4 top-4 rounded-full bg-white px-3 py-1 text-[8px] font-black uppercase tracking-[0.14em] text-[#2563EB] md:py-1.5 md:text-[9px]">
                 Most Popular
               </div>
@@ -243,8 +245,10 @@ export default function MultisportCampPage() {
               </p>
 
               <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-black uppercase tracking-wide text-white">
-                🎽 Free Training Jersey
+                🎽 Training Jersey
               </p>
+
+              <div className="grow" />
 
               <button
                 type="button"
@@ -262,7 +266,7 @@ export default function MultisportCampPage() {
             </div>
 
             {/* TERM 3 — 2 SESSIONS/WEEK */}
-            <div className="rounded-[1.4rem] bg-white/10 p-4 text-white md:rounded-[1.8rem] md:p-7">
+            <div className="flex flex-col rounded-[1.4rem] bg-white/10 p-4 text-white md:rounded-[1.8rem] md:p-7">
               <p className="mb-2 text-[9px] font-black uppercase tracking-[0.28em] text-blue-200 md:text-xs">
                 Term 3 — 2x / Week
               </p>
@@ -282,8 +286,10 @@ export default function MultisportCampPage() {
               </p>
 
               <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#2563EB]/15 px-3 py-1 text-xs font-black uppercase tracking-wide text-blue-200">
-                🎽 Free Training Jersey
+                🎽 Training Jersey
               </p>
+
+              <div className="grow" />
 
               <button
                 type="button"

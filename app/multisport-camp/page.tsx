@@ -73,7 +73,7 @@ export default function MultisportCampPage() {
                 ['Ages', '5–12 Years'],
                 ['Time', '8am–4pm'],
                 ['Location', 'Davies Park, West End'],
-                ['Dates', '1st-3rd July & 9th-10th July'],
+                ['Dates', '1st-2nd July & 10th July'],
               ].map(([label, value]) => (
                 <div key={label} className="rounded-2xl bg-white p-4 shadow-sm">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-[#2563EB]">
