@@ -65,7 +65,7 @@ export default function EliteSoccerClinicPage() {
             <div className="mb-7 grid max-w-xl grid-cols-2 gap-3">
               {[
                 ['Ages', '10–16 Years'],
-                ['Time', '9am–11.00pm'],
+                ['Time', '9am–11.00am'],
                 ['Location', 'Davies Park, West End'],
                 ['From', '$50/day'],
               ].map(([label, value]) => (
