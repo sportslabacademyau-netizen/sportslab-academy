@@ -240,7 +240,7 @@ export default function MultisportCampPage() {
       <p className="text-lg font-black leading-relaxed">
         🎂 10–16 Years
         <br />
-        ⏰  8am–12pm
+        ⏰  9am–11am
       </p>
 
     </div>
