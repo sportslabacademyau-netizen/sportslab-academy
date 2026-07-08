@@ -255,7 +255,7 @@ export default function MultisportCampPage() {
       <p className="text-lg font-black leading-relaxed">
         📆 1st July – 3rd July
         <br />
-        📆 8th July – 10th July
+        📆 9th July – 10th July
       </p>
 
     </div>

@@ -67,7 +67,7 @@ export default function EliteSoccerClinicPage() {
                 ['Ages', '10–16 Years'],
                 ['Time', '9am–11.00am'],
                 ['Location', 'Davies Park, West End'],
-                ['From', '$50/day'],
+                ['Dates', '9th – 10th July'],
               ].map(([label, value]) => (
                 <div key={label} className="rounded-2xl bg-white p-4 shadow-sm">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-[#2563EB]">
@@ -181,7 +181,7 @@ export default function EliteSoccerClinicPage() {
             PACKAGES
           </h2>
 
-          <div className="mt-5 grid gap-3 md:mt-7 md:grid-cols-3 md:gap-4">
+          <div className="mt-5 grid gap-3 md:mt-7 md:max-w-sm md:gap-4">
 
             <div className="rounded-[1.4rem] bg-white/10 p-4 text-white md:rounded-[1.8rem] md:p-7">
               <p className="mb-2 text-[9px] font-black uppercase tracking-[0.28em] text-blue-200 md:text-xs">
@@ -206,82 +206,6 @@ export default function EliteSoccerClinicPage() {
                   })
                 }
                 className="mt-4 w-full cursor-pointer rounded-full bg-white py-3 text-sm font-black text-[#0B1220] active:scale-95 md:py-4"
-              >
-                Add to Cart
-              </button>
-            </div>
-
-            <div className="relative rounded-[1.4rem] bg-[#2563EB] p-4 text-white md:rounded-[1.8rem] md:p-7">
-              <div className="absolute right-4 top-4 rounded-full bg-white px-3 py-1 text-[8px] font-black uppercase tracking-[0.14em] text-[#2563EB] md:py-1.5 md:text-[9px]">
-                Popular
-              </div>
-
-              <p className="mb-2 text-[9px] font-black uppercase tracking-[0.28em] text-blue-100 md:text-xs">
-                3-Day Block
-              </p>
-
-              <div className="flex items-end gap-3">
-                <h3 className="text-3xl font-black leading-none md:text-5xl">
-                  $125
-                </h3>
-
-                <span className="pb-1 text-sm text-blue-100 line-through md:text-xl">
-                  $150
-                </span>
-              </div>
-
-              <p className="mt-2 text-sm font-semibold text-blue-100">
-                Choose Week 1 or Week 2
-              </p>
-
-              <button
-                type="button"
-                onClick={() =>
-                  addProduct({
-                    id: 'elite-soccer-clinic-3-day-block',
-                    name: 'Elite Soccer Clinic - 3 Day Block',
-                    price: 125,
-                  })
-                }
-                className="mt-4 w-full cursor-pointer rounded-full bg-white py-3 text-sm font-black text-[#2563EB] active:scale-95 md:py-4"
-              >
-                Add to Cart
-              </button>
-            </div>
-
-            <div className="relative rounded-[1.4rem] bg-[#2563EB] p-4 text-white md:rounded-[1.8rem] md:p-7">
-              <div className="absolute right-4 top-4 rounded-full bg-white px-3 py-1 text-[8px] font-black uppercase tracking-[0.14em] text-[#2563EB] md:py-1.5 md:text-[9px]">
-                Best Value
-              </div>
-
-              <p className="mb-2 text-[9px] font-black uppercase tracking-[0.28em] text-blue-100 md:text-xs">
-                Full Clinic
-              </p>
-
-              <div className="flex items-end gap-3">
-                <h3 className="text-3xl font-black leading-none md:text-5xl">
-                  $225
-                </h3>
-
-                <span className="pb-1 text-sm text-blue-100 line-through md:text-xl">
-                  $300
-                </span>
-              </div>
-
-              <p className="mt-2 text-sm font-semibold text-blue-100">
-                All 6 clinic days
-              </p>
-
-              <button
-                type="button"
-                onClick={() =>
-                  addProduct({
-                    id: 'elite-soccer-clinic-full-program',
-                    name: 'Elite Soccer Clinic - Full Program',
-                    price: 225,
-                  })
-                }
-                className="mt-4 w-full cursor-pointer rounded-full bg-white py-3 text-sm font-black text-[#2563EB] active:scale-95 md:py-4"
               >
                 Add to Cart
               </button>
@@ -318,7 +242,7 @@ export default function EliteSoccerClinicPage() {
               ['Does my child need experience?', 'Some soccer experience is required, but players do not need to be elite level.'],
               ['What should players bring?', 'Boots, shin pads, water bottle, hat, snacks and comfortable training clothes.'],
               ['Where is the clinic?', 'Davies Park, West End.'],
-              ['Can I book single days?', 'Yes. Single day, 3-day block and full clinic options are available.'],
+              ['Can I book single days?', 'Yes. The clinic is booked as single days.'],
               ['What is the focus?', 'Technical quality, decision making, 1v1 actions, small-sided games and confidence.'],
             ].map(([question, answer]) => (
               <div
