@@ -5,8 +5,11 @@ import { createClient } from '@supabase/supabase-js'
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+// Hardcoded project URL (see lib/supabase.js) so the webhook always writes to
+// the correct Supabase project regardless of the Vercel env var. The service
+// role key stays in env — it is secret and must never be committed.
 const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  'https://umlzgzhlmyzcewzzgakd.supabase.co',
   process.env.SUPABASE_SERVICE_ROLE_KEY
 )
 
