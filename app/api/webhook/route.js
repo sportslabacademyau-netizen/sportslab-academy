@@ -74,6 +74,12 @@ if (
   sessionsTotal = 0
 }
 
+    const amount = session.amount_total
+      ? (session.amount_total / 100).toFixed(2)
+      : '0.00'
+
+    const currency = session.currency?.toUpperCase() || 'AUD'
+
     if (customerEmail) {
       await supabaseAdmin
         .from('parent_dashboard')
@@ -103,11 +109,39 @@ if (
         )
     }
 
-    const amount = session.amount_total
-      ? (session.amount_total / 100).toFixed(2)
-      : '0.00'
+    // Full per-booking record (includes DOB, consent, notes — fields the
+    // dashboard table does not keep). Wrapped so a missing table or error can
+    // never break the confirmation email or make us return a non-200 to Stripe.
+    try {
+      const { error: regError } = await supabaseAdmin
+        .from('registrations')
+        .upsert(
+          {
+            stripe_session_id: session.id,
+            parent_name: metadata.parentName || '',
+            parent_last_name: metadata.parentLastName || '',
+            email: customerEmail || '',
+            phone: metadata.phone || '',
+            child_name: metadata.childName || '',
+            child_dob: metadata.childDob || '',
+            camp_week: metadata.campWeek || '',
+            clinic_week: metadata.clinicWeek || '',
+            notes: metadata.notes || '',
+            terms_accepted: metadata.termsAccepted || '',
+            photo_consent: metadata.photoConsent || '',
+            product: productNames || 'SportsLab Booking',
+            amount: Number(amount),
+            currency,
+          },
+          { onConflict: 'stripe_session_id' }
+        )
 
-    const currency = session.currency?.toUpperCase() || 'AUD'
+      if (regError) {
+        console.error('REGISTRATIONS SAVE ERROR:', regError.message)
+      }
+    } catch (err) {
+      console.error('REGISTRATIONS SAVE EXCEPTION:', err.message)
+    }
 
     await resend.emails.send({
       from: 'SportsLab Academy <bookings@sportslabacademy.com.au>',
@@ -127,10 +161,19 @@ if (
               <p><strong>Product:</strong> ${productNames || 'SportsLab Booking'}</p>
               <p><strong>Dashboard Type:</strong> ${dashboardType}</p>
               <p><strong>Amount Paid:</strong> $${amount} ${currency}</p>
-              <p><strong>Parent:</strong> ${metadata.parentName || ''} ${metadata.parentLastName || ''}</p>
-              <p><strong>Email:</strong> ${customerEmail || ''}</p>
-              <p><strong>Phone:</strong> ${metadata.phone || ''}</p>
-              <p><strong>Child:</strong> ${metadata.childName || ''}</p>
+
+              <h3 style="margin:28px 0 8px; font-size:18px; border-top:1px solid #e5e7eb; padding-top:20px;">Registration Details</h3>
+              <p><strong>Parent First Name:</strong> ${metadata.parentName || '—'}</p>
+              <p><strong>Parent Last Name:</strong> ${metadata.parentLastName || '—'}</p>
+              <p><strong>Email:</strong> ${customerEmail || '—'}</p>
+              <p><strong>Phone:</strong> ${metadata.phone || '—'}</p>
+              <p><strong>Child Name:</strong> ${metadata.childName || '—'}</p>
+              <p><strong>Child Date of Birth:</strong> ${metadata.childDob || '—'}</p>
+              <p><strong>Camp Week:</strong> ${metadata.campWeek || '—'}</p>
+              <p><strong>Clinic Week:</strong> ${metadata.clinicWeek || '—'}</p>
+              <p><strong>Notes:</strong> ${metadata.notes || '—'}</p>
+              <p><strong>Terms Accepted:</strong> ${metadata.termsAccepted || '—'}</p>
+              <p><strong>Photo Consent:</strong> ${metadata.photoConsent || '—'}</p>
 
               <p style="margin-top:34px;">
                 Kind regards,<br />
