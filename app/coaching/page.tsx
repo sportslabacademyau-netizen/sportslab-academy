@@ -29,16 +29,7 @@ export default function MultisportCampPage() {
   }
 
   const addProduct = async (product: any) => {
-
-    const { supabase } = await import('@/lib/supabase')
-
-    const { data } = await supabase.auth.getSession()
-
-    if (!data.session) {
-      setAuthOpen(true)
-      return
-    }
-
+    // No login required — anyone can add to cart and pay.
     addToCart(product)
     setCartOpen(true)
   }

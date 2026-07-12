@@ -56,16 +56,7 @@ export default function MultisportCampPage() {
   }
 
   const addProduct = async (product: any) => {
-
-    const { supabase } = await import('@/lib/supabase')
-
-    const { data } = await supabase.auth.getSession()
-
-    if (!data.session) {
-      setAuthOpen(true)
-      return
-    }
-
+    // No login required — anyone can add to cart and pay.
     addToCart(product)
     setCartOpen(true)
   }
@@ -78,33 +69,23 @@ export default function MultisportCampPage() {
 <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#2563EB] text-white">
   <div className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-2">
 
-    {/* MOBILE CART / LOGIN LEFT */}
+    {/* MOBILE CART LEFT (cart always visible; login hidden for now) */}
     <div className="z-10 flex items-center md:hidden">
-      {loggedIn ? (
-        <button
-          type="button"
-          onClick={() => setCartOpen(true)}
-          className="relative ml-2 cursor-pointer"
-        >
-          <span className="text-3xl brightness-0 invert">
-            🛒
-          </span>
+      <button
+        type="button"
+        onClick={() => setCartOpen(true)}
+        className="relative ml-2 cursor-pointer"
+      >
+        <span className="text-3xl brightness-0 invert">
+          🛒
+        </span>
 
-          {itemCount > 0 && (
-            <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-black text-white">
-              {itemCount}
-            </span>
-          )}
-        </button>
-      ) : (
-        <button
-          type="button"
-          onClick={handleAuthButton}
-          className="text-sm font-black uppercase tracking-wide"
-        >
-          LOGIN
-        </button>
-      )}
+        {itemCount > 0 && (
+          <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-black text-white">
+            {itemCount}
+          </span>
+        )}
+      </button>
     </div>
 
     {/* LOGO */}
@@ -165,24 +146,23 @@ export default function MultisportCampPage() {
         </a>
       )}
 
-      {loggedIn && (
-        <button
-          type="button"
-          onClick={() => setCartOpen(true)}
-          className="relative cursor-pointer"
-        >
-          <span className="text-3xl brightness-0 invert">
-            🛒
+      <button
+        type="button"
+        onClick={() => setCartOpen(true)}
+        className="relative cursor-pointer"
+      >
+        <span className="text-3xl brightness-0 invert">
+          🛒
+        </span>
+
+        {itemCount > 0 && (
+          <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-black text-white">
+            {itemCount}
           </span>
+        )}
+      </button>
 
-          {itemCount > 0 && (
-            <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-black text-white">
-              {itemCount}
-            </span>
-          )}
-        </button>
-      )}
-
+      {/* LOGIN/LOGOUT hidden for now — re-enable to bring auth back.
       <button
         type="button"
         onClick={handleAuthButton}
@@ -190,6 +170,7 @@ export default function MultisportCampPage() {
       >
         {loggedIn ? 'LOGOUT' : 'LOGIN'}
       </button>
+      */}
     </div>
 
     {/* MOBILE HAMBURGER */}
@@ -211,31 +192,21 @@ export default function MultisportCampPage() {
     <div className="relative flex items-center justify-between px-4 py-3">
 
       <div className="z-10 flex items-center md:hidden">
-        {loggedIn ? (
-          <button
-            type="button"
-            onClick={() => setCartOpen(true)}
-            className="relative ml-2"
-          >
-            <span className="text-3xl brightness-0 invert">
-              🛒
-            </span>
+        <button
+          type="button"
+          onClick={() => setCartOpen(true)}
+          className="relative ml-2"
+        >
+          <span className="text-3xl brightness-0 invert">
+            🛒
+          </span>
 
-            {itemCount > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-black text-white">
-                {itemCount}
-              </span>
-            )}
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={handleAuthButton}
-            className="text-sm font-black uppercase tracking-wide"
-          >
-            LOGIN
-          </button>
-        )}
+          {itemCount > 0 && (
+            <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-black text-white">
+              {itemCount}
+            </span>
+          )}
+        </button>
       </div>
 
       {/* LOGO */}
@@ -321,6 +292,7 @@ export default function MultisportCampPage() {
         MEET OUR TEAM
       </a>
 
+      {/* LOGIN/LOGOUT hidden for now — re-enable to bring auth back.
       <button
         type="button"
         onClick={handleAuthButton}
@@ -328,6 +300,7 @@ export default function MultisportCampPage() {
       >
         {loggedIn ? 'LOGOUT' : 'LOGIN'}
       </button>
+      */}
     </div>
   </div>
 )}
