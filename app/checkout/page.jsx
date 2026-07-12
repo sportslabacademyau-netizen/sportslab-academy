@@ -176,20 +176,23 @@ export default function CheckoutPage() {
               className={inputClass}
             />
 
-            <div className="relative h-[64px] w-full overflow-hidden rounded-2xl border border-white/25 bg-transparent">
-
+            <div>
+              <label
+                htmlFor="childDob"
+                className="mb-1 block pl-1 text-xs font-bold uppercase tracking-wide text-[#60A5FA]"
+              >
+                Child Date of Birth
+              </label>
 
               <input
-  name="childDob"
-  type={form.childDob ? "date" : "text"}
-  placeholder="Child Date of Birth"
-  required
-  value={form.childDob}
-  onFocus={(e) => (e.target.type = "date")}
-  onChange={updateForm}
-  className="h-full w-full appearance-none bg-transparent px-5 text-white outline-none placeholder:text-white/45 [color-scheme:dark]"
-/>
-
+                id="childDob"
+                name="childDob"
+                type="date"
+                required
+                value={form.childDob}
+                onChange={updateForm}
+                className={`${inputClass} [color-scheme:dark]`}
+              />
             </div>
 
             {/* JUNIOR SESSION DAY */}
