@@ -124,6 +124,7 @@ if (
         camp_week: metadata.campWeek || '',
         clinic_week: metadata.clinicWeek || '',
         jersey_size: metadata.jerseySize || '',
+        session_day: metadata.sessionDay || '',
         notes: metadata.notes || '',
         terms_accepted: metadata.termsAccepted || '',
         photo_consent: metadata.photoConsent || '',
@@ -136,13 +137,13 @@ if (
         .from('registrations')
         .upsert(registration, { onConflict: 'stripe_session_id' })
 
-      // If the jersey_size column has not been added yet, retry without it so
-      // the rest of the booking still saves.
-      if (regError && /jersey_size/.test(regError.message || '')) {
-        const { jersey_size, ...withoutJersey } = registration
+      // If a newly added column (jersey_size / session_day) has not been
+      // migrated yet, retry without those fields so the booking still saves.
+      if (regError && /jersey_size|session_day/.test(regError.message || '')) {
+        const { jersey_size, session_day, ...withoutNewCols } = registration
         ;({ error: regError } = await supabaseAdmin
           .from('registrations')
-          .upsert(withoutJersey, { onConflict: 'stripe_session_id' }))
+          .upsert(withoutNewCols, { onConflict: 'stripe_session_id' }))
       }
 
       if (regError) {
@@ -181,6 +182,7 @@ if (
               <p><strong>Camp Week:</strong> ${metadata.campWeek || '—'}</p>
               <p><strong>Clinic Week:</strong> ${metadata.clinicWeek || '—'}</p>
               <p><strong>Training Jersey Size:</strong> ${metadata.jerseySize || '—'}</p>
+              <p><strong>Session Day:</strong> ${metadata.sessionDay || '—'}</p>
               <p><strong>Notes:</strong> ${metadata.notes || '—'}</p>
               <p><strong>Terms Accepted:</strong> ${metadata.termsAccepted || '—'}</p>
               <p><strong>Photo Consent:</strong> ${metadata.photoConsent || '—'}</p>

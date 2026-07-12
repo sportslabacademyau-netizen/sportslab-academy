@@ -28,6 +28,7 @@ create table if not exists public.registrations (
   camp_week          text,
   clinic_week        text,
   jersey_size        text,
+  session_day        text,
   notes              text,
   terms_accepted     text,
   photo_consent      text,
@@ -43,3 +44,4 @@ alter table public.registrations enable row level security;
 -- added). Safe to run anytime — does nothing if the column already exists.
 -- ─────────────────────────────────────────────────────────────────────────
 alter table public.registrations add column if not exists jersey_size text;
+alter table public.registrations add column if not exists session_day text;

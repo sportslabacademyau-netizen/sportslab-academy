@@ -31,6 +31,12 @@ export default function CheckoutPage() {
       item.id === 'junior-term3-1x' || item.id === 'junior-term3-2x'
   )
 
+  // Junior single-session-per-week packages — collect preferred session day.
+  const requiresSessionDay = cart.some(
+    (item) =>
+      item.id === 'junior-casual' || item.id === 'junior-term3-1x'
+  )
+
   const [form, setForm] = useState({
     parentName: '',
     parentLastName: '',
@@ -41,6 +47,7 @@ export default function CheckoutPage() {
     campWeek: '',
     clinicWeek: '',
     jerseySize: '',
+    sessionDay: '',
     notes: '',
   })
 
@@ -69,6 +76,11 @@ export default function CheckoutPage() {
 
     if (requiresJerseySize && !form.jerseySize) {
       alert('Please select a training jersey size to continue.')
+      return
+    }
+
+    if (requiresSessionDay && !form.sessionDay) {
+      alert('Please select a session day to continue.')
       return
     }
 
@@ -179,6 +191,34 @@ export default function CheckoutPage() {
 />
 
             </div>
+
+            {/* JUNIOR SESSION DAY */}
+            {requiresSessionDay && (
+              <div className="rounded-2xl border border-[#2563EB]/60 bg-[#2563EB]/15 p-5">
+                <p className="text-sm font-black text-white">
+                  Session Day
+                </p>
+                <p className="mb-3 mt-1 text-xs leading-relaxed text-white/60">
+                  Please select which weekly session your child will attend.
+                </p>
+
+                <select
+                  name="sessionDay"
+                  required
+                  value={form.sessionDay}
+                  onChange={updateForm}
+                  className="h-[64px] w-full rounded-2xl border border-white/25 bg-[#0B1220] px-5 text-white outline-none"
+                >
+                  <option value="">Select Session Day</option>
+                  <option value="Thursday — 3:30pm to 4:30pm">
+                    Thursday — 3:30pm to 4:30pm
+                  </option>
+                  <option value="Sunday — 9:30am to 10:30am">
+                    Sunday — 9:30am to 10:30am
+                  </option>
+                </select>
+              </div>
+            )}
 
             {/* JUNIOR TRAINING JERSEY SIZE */}
             {requiresJerseySize && (

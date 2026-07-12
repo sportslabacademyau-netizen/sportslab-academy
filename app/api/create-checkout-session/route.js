@@ -81,6 +81,7 @@ export async function POST(req) {
         campWeek: form.campWeek || '',
         clinicWeek: form.clinicWeek || '',
         jerseySize: form.jerseySize || '',
+        sessionDay: form.sessionDay || '',
         phone: form.phone || '',
         email: form.email || '',
         notes: form.notes || '',
