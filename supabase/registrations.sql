@@ -27,6 +27,7 @@ create table if not exists public.registrations (
   child_dob          text,
   camp_week          text,
   clinic_week        text,
+  jersey_size        text,
   notes              text,
   terms_accepted     text,
   photo_consent      text,
@@ -36,3 +37,9 @@ create table if not exists public.registrations (
 );
 
 alter table public.registrations enable row level security;
+
+-- ─────────────────────────────────────────────────────────────────────────
+-- MIGRATION (run this if the table already existed before jersey_size was
+-- added). Safe to run anytime — does nothing if the column already exists.
+-- ─────────────────────────────────────────────────────────────────────────
+alter table public.registrations add column if not exists jersey_size text;

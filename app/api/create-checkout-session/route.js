@@ -80,6 +80,7 @@ export async function POST(req) {
         childDob: form.childDob || '',
         campWeek: form.campWeek || '',
         clinicWeek: form.clinicWeek || '',
+        jerseySize: form.jerseySize || '',
         phone: form.phone || '',
         email: form.email || '',
         notes: form.notes || '',

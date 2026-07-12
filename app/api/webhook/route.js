@@ -113,28 +113,37 @@ if (
     // dashboard table does not keep). Wrapped so a missing table or error can
     // never break the confirmation email or make us return a non-200 to Stripe.
     try {
-      const { error: regError } = await supabaseAdmin
+      const registration = {
+        stripe_session_id: session.id,
+        parent_name: metadata.parentName || '',
+        parent_last_name: metadata.parentLastName || '',
+        email: customerEmail || '',
+        phone: metadata.phone || '',
+        child_name: metadata.childName || '',
+        child_dob: metadata.childDob || '',
+        camp_week: metadata.campWeek || '',
+        clinic_week: metadata.clinicWeek || '',
+        jersey_size: metadata.jerseySize || '',
+        notes: metadata.notes || '',
+        terms_accepted: metadata.termsAccepted || '',
+        photo_consent: metadata.photoConsent || '',
+        product: productNames || 'SportsLab Booking',
+        amount: Number(amount),
+        currency,
+      }
+
+      let { error: regError } = await supabaseAdmin
         .from('registrations')
-        .upsert(
-          {
-            stripe_session_id: session.id,
-            parent_name: metadata.parentName || '',
-            parent_last_name: metadata.parentLastName || '',
-            email: customerEmail || '',
-            phone: metadata.phone || '',
-            child_name: metadata.childName || '',
-            child_dob: metadata.childDob || '',
-            camp_week: metadata.campWeek || '',
-            clinic_week: metadata.clinicWeek || '',
-            notes: metadata.notes || '',
-            terms_accepted: metadata.termsAccepted || '',
-            photo_consent: metadata.photoConsent || '',
-            product: productNames || 'SportsLab Booking',
-            amount: Number(amount),
-            currency,
-          },
-          { onConflict: 'stripe_session_id' }
-        )
+        .upsert(registration, { onConflict: 'stripe_session_id' })
+
+      // If the jersey_size column has not been added yet, retry without it so
+      // the rest of the booking still saves.
+      if (regError && /jersey_size/.test(regError.message || '')) {
+        const { jersey_size, ...withoutJersey } = registration
+        ;({ error: regError } = await supabaseAdmin
+          .from('registrations')
+          .upsert(withoutJersey, { onConflict: 'stripe_session_id' }))
+      }
 
       if (regError) {
         console.error('REGISTRATIONS SAVE ERROR:', regError.message)
@@ -171,6 +180,7 @@ if (
               <p><strong>Child Date of Birth:</strong> ${metadata.childDob || '—'}</p>
               <p><strong>Camp Week:</strong> ${metadata.campWeek || '—'}</p>
               <p><strong>Clinic Week:</strong> ${metadata.clinicWeek || '—'}</p>
+              <p><strong>Training Jersey Size:</strong> ${metadata.jerseySize || '—'}</p>
               <p><strong>Notes:</strong> ${metadata.notes || '—'}</p>
               <p><strong>Terms Accepted:</strong> ${metadata.termsAccepted || '—'}</p>
               <p><strong>Photo Consent:</strong> ${metadata.photoConsent || '—'}</p>

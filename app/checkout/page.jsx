@@ -25,6 +25,12 @@ export default function CheckoutPage() {
     (item) => item.id === 'elite-soccer-clinic-full-program'
   )
 
+  // Junior Term 3 packages include a training jersey — collect the size.
+  const requiresJerseySize = cart.some(
+    (item) =>
+      item.id === 'junior-term3-1x' || item.id === 'junior-term3-2x'
+  )
+
   const [form, setForm] = useState({
     parentName: '',
     parentLastName: '',
@@ -34,6 +40,7 @@ export default function CheckoutPage() {
     childDob: '',
     campWeek: '',
     clinicWeek: '',
+    jerseySize: '',
     notes: '',
   })
 
@@ -57,6 +64,11 @@ export default function CheckoutPage() {
 
     if (!agreedTerms) {
       alert('Please accept the Terms & Declarations to continue.')
+      return
+    }
+
+    if (requiresJerseySize && !form.jerseySize) {
+      alert('Please select a training jersey size to continue.')
       return
     }
 
@@ -167,6 +179,37 @@ export default function CheckoutPage() {
 />
 
             </div>
+
+            {/* JUNIOR TRAINING JERSEY SIZE */}
+            {requiresJerseySize && (
+              <div className="rounded-2xl border border-[#2563EB]/60 bg-[#2563EB]/15 p-5">
+                <p className="text-sm font-black text-white">
+                  Training Jersey Size
+                </p>
+                <p className="mb-3 mt-1 text-xs leading-relaxed text-white/60">
+                  Your package includes a free training jersey. Please select your child&apos;s size.
+                </p>
+
+                <select
+                  name="jerseySize"
+                  required
+                  value={form.jerseySize}
+                  onChange={updateForm}
+                  className="h-[64px] w-full rounded-2xl border border-white/25 bg-[#0B1220] px-5 text-white outline-none"
+                >
+                  <option value="">Select Jersey Size</option>
+                  <option value="Youth 6">Youth 6</option>
+                  <option value="Youth 8">Youth 8</option>
+                  <option value="Youth 10">Youth 10</option>
+                  <option value="Youth 12">Youth 12</option>
+                  <option value="Youth 14">Youth 14</option>
+                  <option value="Adult S">Adult S</option>
+                  <option value="Adult M">Adult M</option>
+                  <option value="Adult L">Adult L</option>
+                  <option value="Adult XL">Adult XL</option>
+                </select>
+              </div>
+            )}
 
             {/* ELITE CLINIC 3 DAY BLOCK */}
             {requiresClinicWeekSelection && (
