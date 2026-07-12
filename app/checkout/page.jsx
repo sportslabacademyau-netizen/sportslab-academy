@@ -187,7 +187,7 @@ export default function CheckoutPage() {
   value={form.childDob}
   onFocus={(e) => (e.target.type = "date")}
   onChange={updateForm}
-  className="h-full w-full appearance-none bg-transparent px-5 ..."
+  className="h-full w-full appearance-none bg-transparent px-5 text-white outline-none placeholder:text-white/45 [color-scheme:dark]"
 />
 
             </div>
