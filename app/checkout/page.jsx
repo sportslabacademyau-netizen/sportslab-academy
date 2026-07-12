@@ -176,24 +176,19 @@ export default function CheckoutPage() {
               className={inputClass}
             />
 
-            <div>
-              <label
-                htmlFor="childDob"
-                className="mb-1 block pl-1 text-xs font-bold uppercase tracking-wide text-[#60A5FA]"
-              >
-                Child Date of Birth
-              </label>
-
-              <input
-                id="childDob"
-                name="childDob"
-                type="date"
-                required
-                value={form.childDob}
-                onChange={updateForm}
-                className={`${inputClass} [color-scheme:dark]`}
-              />
-            </div>
+            <input
+              name="childDob"
+              type={form.childDob ? 'date' : 'text'}
+              placeholder="Child Date of Birth"
+              required
+              value={form.childDob}
+              onFocus={(e) => (e.target.type = 'date')}
+              onBlur={(e) => {
+                if (!e.target.value) e.target.type = 'text'
+              }}
+              onChange={updateForm}
+              className={`${inputClass} [color-scheme:dark]`}
+            />
 
             {/* JUNIOR SESSION DAY */}
             {requiresSessionDay && (
