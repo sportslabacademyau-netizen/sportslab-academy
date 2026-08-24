@@ -262,12 +262,12 @@ export default function CheckoutPage() {
               >
                 <option value="">Select Soccer Clinic Week</option>
 
-                <option value="Week 1 — 1st July to 3rd July">
-                  Week 1 — 1st July to 3rd July
+                <option value="Week 1 — 23rd September to 25th September">
+                  Week 1 — 23rd September to 25th September
                 </option>
 
-                <option value="Week 2 — 8th July to 10th July">
-                  Week 2 — 8th July to 10th July
+                <option value="Week 2 — 30th September to 2nd October">
+                  Week 2 — 30th September to 2nd October
                 </option>
 
               </select>

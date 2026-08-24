@@ -140,9 +140,9 @@ export default function MultisportCampPage() {
       </p>
 
       <p className="text-lg font-black leading-relaxed">
-        📆 1st July – 3rd July
+        📆 24th – 25th September
         <br />
-        📆 9th July – 10th July
+        📆 1st – 2nd October
       </p>
 
     </div>
@@ -244,9 +244,9 @@ export default function MultisportCampPage() {
       </p>
 
       <p className="text-lg font-black leading-relaxed">
-        📆 1st July – 3rd July
+        📆 23rd – 25th September
         <br />
-        📆 9th July – 10th July
+        📆 30th September – 2nd October
       </p>
 
     </div>

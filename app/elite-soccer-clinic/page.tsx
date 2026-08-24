@@ -67,7 +67,7 @@ export default function EliteSoccerClinicPage() {
                 ['Ages', '10–16 Years'],
                 ['Time', '9am–11.00am'],
                 ['Location', 'Davies Park, West End'],
-                ['Dates', '9th – 10th July'],
+                ['Dates', '23rd-25th September & 30th Sept-2nd October'],
               ].map(([label, value]) => (
                 <div key={label} className="rounded-2xl bg-white p-4 shadow-sm">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-[#2563EB]">
