@@ -181,7 +181,7 @@ export default function EliteSoccerClinicPage() {
             PACKAGES
           </h2>
 
-          <div className="mt-5 grid gap-3 md:mt-7 md:max-w-sm md:gap-4">
+          <div className="mt-5 grid gap-3 md:mt-7 md:grid-cols-3 md:gap-4">
 
             <div className="rounded-[1.4rem] bg-white/10 p-4 text-white md:rounded-[1.8rem] md:p-7">
               <p className="mb-2 text-[9px] font-black uppercase tracking-[0.28em] text-blue-200 md:text-xs">
@@ -203,6 +203,62 @@ export default function EliteSoccerClinicPage() {
                     id: 'elite-soccer-clinic-single-day',
                     name: 'Elite Soccer Clinic - Single Day',
                     price: 50,
+                  })
+                }
+                className="mt-4 w-full cursor-pointer rounded-full bg-white py-3 text-sm font-black text-[#0B1220] active:scale-95 md:py-4"
+              >
+                Add to Cart
+              </button>
+            </div>
+
+            <div className="rounded-[1.4rem] bg-white/10 p-4 text-white md:rounded-[1.8rem] md:p-7">
+              <p className="mb-2 text-[9px] font-black uppercase tracking-[0.28em] text-blue-200 md:text-xs">
+                3 Day Block
+              </p>
+
+              <h3 className="text-3xl font-black leading-none md:text-5xl">
+                $125
+              </h3>
+
+              <p className="mt-2 text-sm font-semibold text-blue-100">
+                Three clinic days
+              </p>
+
+              <button
+                type="button"
+                onClick={() =>
+                  addProduct({
+                    id: 'elite-soccer-clinic-3-day-block',
+                    name: 'Elite Soccer Clinic - 3 Day Block',
+                    price: 125,
+                  })
+                }
+                className="mt-4 w-full cursor-pointer rounded-full bg-white py-3 text-sm font-black text-[#0B1220] active:scale-95 md:py-4"
+              >
+                Add to Cart
+              </button>
+            </div>
+
+            <div className="rounded-[1.4rem] bg-white/10 p-4 text-white md:rounded-[1.8rem] md:p-7">
+              <p className="mb-2 text-[9px] font-black uppercase tracking-[0.28em] text-blue-200 md:text-xs">
+                Full Camp
+              </p>
+
+              <h3 className="text-3xl font-black leading-none md:text-5xl">
+                $225
+              </h3>
+
+              <p className="mt-2 text-sm font-semibold text-blue-100">
+                All 6 clinic days
+              </p>
+
+              <button
+                type="button"
+                onClick={() =>
+                  addProduct({
+                    id: 'elite-soccer-clinic-full-program',
+                    name: 'Elite Soccer Clinic - Full Camp (6 Days)',
+                    price: 225,
                   })
                 }
                 className="mt-4 w-full cursor-pointer rounded-full bg-white py-3 text-sm font-black text-[#0B1220] active:scale-95 md:py-4"
