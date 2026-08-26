@@ -261,6 +261,18 @@ export default function MultisportCampPage() {
       </div>
     </div>
 
+    <div className="mt-4 rounded-[1.4rem] border border-white/10 bg-white/5 p-4 text-white md:mt-5 md:p-5">
+      <p className="text-[9px] font-black uppercase tracking-[0.28em] text-blue-200 md:text-[10px]">
+        Important
+      </p>
+
+      <p className="mt-1 text-sm leading-snug text-zinc-300 md:text-base">
+        The camp requires a minimum of 10 participants to run. If this
+        minimum is not reached, the camp will be cancelled and you will
+        receive a full refund.
+      </p>
+    </div>
+
   </div>
 </section>
 
@@ -286,6 +298,7 @@ export default function MultisportCampPage() {
         ['Are children supervised all day?', 'Yes. Coaches supervise the full program.'],
         ['Can I book single days?', 'Yes. Just remember to write the day you picked in the notes.'],
         ['Is late pick-up available?', 'Yes. Extended care until 5pm is available for $10/day.'],
+        ['Is there a minimum number of participants?', 'Yes. The camp needs at least 10 participants to run. If we do not reach 10, the camp is cancelled and you receive a full refund.'],
       ].map(([question, answer]) => (
         <div
           key={question}
