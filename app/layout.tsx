@@ -41,8 +41,32 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* Termly consent manager — must load first so autoBlock can block
-            tracking scripts (e.g. Meta Pixel) until the visitor consents. */}
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-K5V2P3KZ"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+
+        {/* Google Tag Manager — deliberately loaded BEFORE the Termly resource
+            blocker so autoBlock cannot intercept gtm.js. The container loads on
+            every pageview regardless of banner state; individual tags should be
+            gated inside GTM via Google Consent Mode. */}
+        <Script id="google-tag-manager" strategy="beforeInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-K5V2P3KZ');
+          `}
+        </Script>
+
+        {/* Termly consent manager. autoBlock still gates the Meta Pixel and any
+            other third-party scripts loaded after this point. */}
         <Script
           id="termly-resource-blocker"
           src="https://app.termly.io/resource-blocker/a52668b9-d1cd-4500-9336-8e0fda9d7e41?autoBlock=on"
