@@ -1,14 +1,27 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useCart } from '@/context/CartContext'
 import FormInput from '@/components/FormInput'
+import { trackBeginCheckout } from '@/lib/gtm'
 
 const inputClass =
   'h-[64px] w-full rounded-2xl border border-white/25 bg-transparent px-5 text-white outline-none placeholder:text-white/45'
 
 export default function CheckoutPage() {
   const { cart, total } = useCart()
+
+  // begin_checkout fires once the visitor reaches the checkout page with a
+  // populated cart — not on submit, so the funnel still captures the people
+  // who start checking out and drop off. The cart hydrates from localStorage
+  // one render late, hence the effect rather than a straight call.
+  const beganCheckout = useRef(false)
+
+  useEffect(() => {
+    if (beganCheckout.current || cart.length === 0) return
+    beganCheckout.current = true
+    trackBeginCheckout(cart)
+  }, [cart])
 
   const hasSingleDayCamp = cart.some((item) => item.id === 'camp-single-day')
   const hasTwoWeeksCamp = cart.some((item) => item.id === 'camp-two-weeks')

@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext, useContext, useEffect, useState } from 'react'
+import { trackAddToCart } from '@/lib/gtm'
 
 const CartContext = createContext()
 
@@ -20,6 +21,10 @@ export function CartProvider({ children }) {
   }, [cart])
 
   const addToCart = (item) => {
+    // Pushed here, outside the state updater, because React may run the
+    // updater twice (StrictMode / re-render) and that would double-count.
+    trackAddToCart(item)
+
     setCart((prev) => {
       const existingItem = prev.find((product) => product.id === item.id)
 
@@ -35,6 +40,10 @@ export function CartProvider({ children }) {
     })
 
     setCartOpen(true)
+  }
+
+  const clearCart = () => {
+    setCart([])
   }
 
   const removeFromCart = (id) => {
@@ -76,6 +85,7 @@ export function CartProvider({ children }) {
         cart,
         addToCart,
         removeFromCart,
+        clearCart,
         increaseQuantity,
         decreaseQuantity,
         cartOpen,

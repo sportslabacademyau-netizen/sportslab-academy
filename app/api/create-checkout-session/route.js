@@ -89,7 +89,10 @@ export async function POST(req) {
         photoConsent: form.photoConsent || '',
       },
 
-      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout/success`,
+      // {CHECKOUT_SESSION_ID} is substituted by Stripe on redirect; the
+      // success page uses it to verify the payment server-side before the
+      // GA4 purchase event fires.
+      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout`,
     })
 

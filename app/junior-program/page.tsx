@@ -1,11 +1,21 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from '@/components/Footer'
 import AuthModal from '@/components/AuthModal'
 import { useCart } from '@/context/CartContext'
+import { trackViewItem } from '@/lib/gtm'
 import Navbar from '@/components/Navbar'
 import { useAuthSetup } from '@/hooks/useAuthSetup'
+
+// Products sold on this page, mirrored from lib/products.js for the
+// GA4 view_item event. Keep the ids and prices in sync with the
+// buttons below and with the server-side catalog.
+const PAGE_PRODUCTS = [
+  { id: 'junior-casual', name: 'Junior Program - Casual Pass (1 session)', price: 25 },
+  { id: 'junior-term3-1x', name: 'Junior Program - Term 3 (1 session/week, 10 sessions)', price: 220 },
+  { id: 'junior-term3-2x', name: 'Junior Program - Term 3 (2 sessions/week, 20 sessions)', price: 400 },
+]
 
 export default function MultisportCampPage() {
 
@@ -17,6 +27,12 @@ export default function MultisportCampPage() {
     setCartOpen,
     itemCount,
   } = useCart()
+
+  // view_item on load — this page presents the full detail (price,
+  // inclusions, dates) for each product listed below.
+  useEffect(() => {
+    trackViewItem(PAGE_PRODUCTS)
+  }, [])
 
   const { loggedIn, handleAuthButton: performAuthAction } = useAuthSetup()
 

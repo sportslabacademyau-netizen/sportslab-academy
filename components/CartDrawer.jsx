@@ -1,6 +1,8 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useCart } from '@/context/CartContext'
+import { trackViewCart } from '@/lib/gtm'
 
 export default function CartDrawer() {
   const {
@@ -12,6 +14,15 @@ export default function CartDrawer() {
     decreaseQuantity,
     total,
   } = useCart()
+
+  // view_cart fires each time the drawer is opened — hooks must run before the
+  // early return below, so this sits above it.
+  useEffect(() => {
+    if (cartOpen) trackViewCart(cart)
+    // Intentionally keyed on `cartOpen` only: editing quantities while the
+    // drawer is open is not a new cart view.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cartOpen])
 
   if (!cartOpen) return null
 

@@ -51,6 +51,33 @@ export default function RootLayout({
           />
         </noscript>
 
+        {/* Google Consent Mode v2 defaults. MUST run before gtm.js so no tag
+            can fire before the visitor has answered the Termly banner. Termly
+            (with its Google Consent Mode setting enabled) issues the matching
+            `consent('update', ...)` once a choice is made; `wait_for_update`
+            gives it 500ms to do so before tags give up waiting.
+
+            To only gate EEA/UK traffic instead of everyone, add a second
+            default call with `region: ['EEA','GB']` and grant by default here. */}
+        <Script id="google-consent-mode-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              functionality_storage: 'denied',
+              personalization_storage: 'denied',
+              security_storage: 'granted',
+              wait_for_update: 500
+            });
+            gtag('set', 'ads_data_redaction', true);
+            gtag('set', 'url_passthrough', true);
+          `}
+        </Script>
+
         {/* Google Tag Manager — deliberately loaded BEFORE the Termly resource
             blocker so autoBlock cannot intercept gtm.js. The container loads on
             every pageview regardless of banner state; individual tags should be

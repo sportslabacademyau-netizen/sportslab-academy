@@ -1,6 +1,16 @@
+import { Suspense } from 'react'
+import PurchaseTracker from '@/components/PurchaseTracker'
+
+// Stripe redirects here with ?session_id=cs_... — PurchaseTracker verifies the
+// payment server-side and fires the GA4 purchase event. useSearchParams needs a
+// Suspense boundary so the rest of this page can still be prerendered.
 export default function SuccessPage() {
   return (
     <main className="min-h-screen bg-[#0B0F19] px-6 py-16 text-white md:py-24">
+      <Suspense fallback={null}>
+        <PurchaseTracker />
+      </Suspense>
+
       <div className="mx-auto max-w-4xl">
 
         {/* SUCCESS CARD */}

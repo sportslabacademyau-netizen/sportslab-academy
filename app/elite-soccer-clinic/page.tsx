@@ -1,17 +1,33 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from '@/components/Footer'
 import AuthModal from '@/components/AuthModal'
 import { useCart } from '@/context/CartContext'
+import { trackViewItem } from '@/lib/gtm'
 import Navbar from '@/components/Navbar'
 import { useAuthSetup } from '@/hooks/useAuthSetup'
+
+// Products sold on this page, mirrored from lib/products.js for the
+// GA4 view_item event. Keep the ids and prices in sync with the
+// buttons below and with the server-side catalog.
+const PAGE_PRODUCTS = [
+  { id: 'elite-soccer-clinic-single-day', name: 'Elite Soccer Clinic - Single Day', price: 50 },
+  { id: 'elite-soccer-clinic-3-day-block', name: 'Elite Soccer Clinic - 3 Day Block', price: 125 },
+  { id: 'elite-soccer-clinic-full-program', name: 'Elite Soccer Clinic - Full Camp (6 Days)', price: 225 },
+]
 
 export default function EliteSoccerClinicPage() {
   const [authOpen, setAuthOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   const { addToCart, setCartOpen, itemCount } = useCart()
+
+  // view_item on load — this page presents the full detail (price,
+  // inclusions, dates) for each product listed below.
+  useEffect(() => {
+    trackViewItem(PAGE_PRODUCTS)
+  }, [])
 
   const { loggedIn, handleAuthButton: performAuthAction } = useAuthSetup()
 
