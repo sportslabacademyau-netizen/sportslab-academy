@@ -404,7 +404,7 @@ export default function MultisportCampPage() {
           <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-3 font-black">
             Explore →
           </span>
-          
+
         </div>
       </a>
 
@@ -436,38 +436,7 @@ export default function MultisportCampPage() {
           <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-3 font-black">
             Explore →
           </span>
-       
-        </div>
-      </a>
-<a
-        href="/camp"
-        className="group overflow-hidden rounded-[2.5rem] border border-[#2563EB]/20 bg-[#10182B]/90 backdrop-blur transition hover:-translate-y-2"
-      >
-        <img
-          src="/multisport-camp.jpg"
-          alt="Holiday Camps"
-          className="h-[320px] w-full object-cover transition duration-700 group-hover:scale-105"
-        />
 
-        <div className="p-8">
-         <p className="mb-3 text-sm font-black uppercase tracking-[0.3em] text-[#2563EB]">
-            DEVELOPMENT CAMPS
-          </p>
-
-          <h3 className="mb-4 text-4xl font-black leading-none">
-            SCHOOL HOLIDAY
-            <br />
-            PROGRAMS
-          </h3>
-
-          <p className="mb-8 text-lg leading-relaxed text-zinc-300">
-            Elite holiday camps combining soccer development, multisport activities and high-performance coaching.
-          </p>
-
-          <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-3 font-black">
-            Explore →
-          </span>
-      
         </div>
       </a>
 

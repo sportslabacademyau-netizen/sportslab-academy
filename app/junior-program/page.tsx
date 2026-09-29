@@ -12,9 +12,8 @@ import { useAuthSetup } from '@/hooks/useAuthSetup'
 // GA4 view_item event. Keep the ids and prices in sync with the
 // buttons below and with the server-side catalog.
 const PAGE_PRODUCTS = [
-  { id: 'junior-casual', name: 'Junior Program - Casual Pass (1 session)', price: 25 },
-  { id: 'junior-term3-1x', name: 'Junior Program - Term 3 (1 session/week, 10 sessions)', price: 220 },
-  { id: 'junior-term3-2x', name: 'Junior Program - Term 3 (2 sessions/week, 20 sessions)', price: 400 },
+  { id: 'junior-casual', name: 'Junior Program - Casual Pass (1 session)', price: 35 },
+  { id: 'junior-term4-1x', name: 'Junior Program - Term 4 (8 sessions)', price: 170 },
 ]
 
 export default function MultisportCampPage() {
@@ -88,8 +87,8 @@ export default function MultisportCampPage() {
             {[
               ['Ages', '6 – 12 Years'],
               ['Location', 'West End'],
-              ['Thursday', '3:30pm – 4:30pm'],
-              ['Sunday', '9:30am – 10:30am'],
+              ['Term 4', '5 Oct – 29 Nov'],
+              ['Sessions', 'Thursday & Sunday'],
             ].map(([label, value]) => (
               <div key={label} className="rounded-2xl bg-white p-4 shadow-sm">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-[#2563EB]">
@@ -194,7 +193,7 @@ export default function MultisportCampPage() {
             PROGRAM
           </h2>
 
-          <div className="mt-5 grid gap-3 md:mt-7 md:grid-cols-3 md:gap-4">
+          <div className="mt-5 grid gap-3 md:mt-7 md:grid-cols-2 md:gap-4">
 
             {/* CASUAL PASS */}
             <div className="flex flex-col rounded-[1.4rem] bg-white/10 p-4 text-white md:rounded-[1.8rem] md:p-7">
@@ -203,7 +202,7 @@ export default function MultisportCampPage() {
               </p>
 
               <h3 className="text-3xl font-black leading-none md:text-5xl">
-                $25
+                $35
               </h3>
 
               <p className="mt-2 text-sm font-semibold text-blue-100">
@@ -218,7 +217,7 @@ export default function MultisportCampPage() {
                   addProduct({
                     id: 'junior-casual',
                     name: 'Junior Program - Casual Pass (1 session)',
-                    price: 25,
+                    price: 35,
                   })
                 }
                 className="mt-4 w-full cursor-pointer rounded-full bg-white py-3 text-sm font-black text-[#0B1220] active:scale-95 md:py-4"
@@ -227,32 +226,22 @@ export default function MultisportCampPage() {
               </button>
             </div>
 
-            {/* TERM 3 — 1 SESSION/WEEK */}
+            {/* TERM 4 — 8 SESSIONS */}
             <div className="relative flex flex-col rounded-[1.4rem] bg-[#2563EB] p-4 text-white md:rounded-[1.8rem] md:p-7">
               <div className="absolute right-4 top-4 rounded-full bg-white px-3 py-1 text-[8px] font-black uppercase tracking-[0.14em] text-[#2563EB] md:py-1.5 md:text-[9px]">
                 Most Popular
               </div>
 
               <p className="mb-2 text-[9px] font-black uppercase tracking-[0.28em] text-blue-100 md:text-xs">
-                Term 3 — 1x / Week
+                Term 4 Program
               </p>
 
-              <div className="flex items-end gap-3">
-                <h3 className="text-3xl font-black leading-none md:text-5xl">
-                  $220
-                </h3>
-
-                <span className="pb-1 text-sm text-blue-100 line-through md:text-xl">
-                  $250
-                </span>
-              </div>
+              <h3 className="text-3xl font-black leading-none md:text-5xl">
+                $170
+              </h3>
 
               <p className="mt-2 text-sm font-semibold text-blue-100">
-                1 session per week · 10 sessions
-              </p>
-
-              <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1 text-xs font-black uppercase tracking-wide text-white">
-                🎽 Training Jersey Included
+                8 sessions · 5 Oct – 29 Nov
               </p>
 
               <div className="grow" />
@@ -261,53 +250,12 @@ export default function MultisportCampPage() {
                 type="button"
                 onClick={() =>
                   addProduct({
-                    id: 'junior-term3-1x',
-                    name: 'Junior Program - Term 3 (1 session/week, 10 sessions)',
-                    price: 220,
+                    id: 'junior-term4-1x',
+                    name: 'Junior Program - Term 4 (8 sessions)',
+                    price: 170,
                   })
                 }
                 className="mt-4 w-full cursor-pointer rounded-full bg-white py-3 text-sm font-black text-[#2563EB] active:scale-95 md:py-4"
-              >
-                Add to Cart
-              </button>
-            </div>
-
-            {/* TERM 3 — 2 SESSIONS/WEEK */}
-            <div className="flex flex-col rounded-[1.4rem] bg-white/10 p-4 text-white md:rounded-[1.8rem] md:p-7">
-              <p className="mb-2 text-[9px] font-black uppercase tracking-[0.28em] text-blue-200 md:text-xs">
-                Term 3 — 2x / Week
-              </p>
-
-              <div className="flex items-end gap-3">
-                <h3 className="text-3xl font-black leading-none md:text-5xl">
-                  $400
-                </h3>
-
-                <span className="pb-1 text-sm text-blue-100 line-through md:text-xl">
-                  $500
-                </span>
-              </div>
-
-              <p className="mt-2 text-sm font-semibold text-blue-100">
-                2 sessions per week · 20 sessions
-              </p>
-
-              <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-[#2563EB]/15 px-3 py-1 text-xs font-black uppercase tracking-wide text-blue-200">
-                🎽 Training Jersey Included
-              </p>
-
-              <div className="grow" />
-
-              <button
-                type="button"
-                onClick={() =>
-                  addProduct({
-                    id: 'junior-term3-2x',
-                    name: 'Junior Program - Term 3 (2 sessions/week, 20 sessions)',
-                    price: 400,
-                  })
-                }
-                className="mt-4 w-full cursor-pointer rounded-full bg-white py-3 text-sm font-black text-[#0B1220] active:scale-95 md:py-4"
               >
                 Add to Cart
               </button>
