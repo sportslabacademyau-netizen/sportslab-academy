@@ -22,10 +22,6 @@ export default function Footer() {
           </p>
 
           <div className="space-y-2 text-sm md:space-y-3 md:text-lg">
-            <a href="/camp" className="block hover:text-blue-300">
-              Holiday Programs
-            </a>
-
             <a href="/coaching" className="block hover:text-blue-300">
               Private Coaching
             </a>

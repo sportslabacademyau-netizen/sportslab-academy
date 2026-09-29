@@ -54,9 +54,6 @@ export default function Navbar({
 
           {/* DESKTOP MENU */}
           <div className="hidden items-center gap-8 md:flex">
-            <a href="/camp" className="font-semibold hover:text-white/70">
-              HOLIDAY PROGRAMS
-            </a>
             <a href="/coaching" className="font-semibold hover:text-white/70">
               PRIVATE COACHING
             </a>
@@ -172,13 +169,6 @@ export default function Navbar({
                 DASHBOARD
               </a>
             )}
-            <a
-              onClick={() => setMenuOpen(false)}
-              href="/camp"
-              className="whitespace-nowrap border-b border-white/20 py-4"
-            >
-              HOLIDAY PROGRAMS
-            </a>
             <a
               onClick={() => setMenuOpen(false)}
               href="/coaching"
