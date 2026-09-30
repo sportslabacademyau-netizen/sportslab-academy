@@ -202,7 +202,7 @@ export default function MultisportCampPage() {
               </p>
 
               <h3 className="text-3xl font-black leading-none md:text-5xl">
-                $35
+                $25
               </h3>
 
               <p className="mt-2 text-sm font-semibold text-blue-100">
