@@ -12,7 +12,7 @@ import { useAuthSetup } from '@/hooks/useAuthSetup'
 // GA4 view_item event. Keep the ids and prices in sync with the
 // buttons below and with the server-side catalog.
 const PAGE_PRODUCTS = [
-  { id: 'junior-casual', name: 'Junior Program - Casual Pass (1 session)', price: 35 },
+  { id: 'junior-casual', name: 'Junior Program - Casual Pass (1 session)', price: 25 },
   { id: 'junior-term4-1x', name: 'Junior Program - Term 4 (8 sessions)', price: 170 },
 ]
 
@@ -217,7 +217,7 @@ export default function MultisportCampPage() {
                   addProduct({
                     id: 'junior-casual',
                     name: 'Junior Program - Casual Pass (1 session)',
-                    price: 35,
+                    price: 25,
                   })
                 }
                 className="mt-4 w-full cursor-pointer rounded-full bg-white py-3 text-sm font-black text-[#0B1220] active:scale-95 md:py-4"

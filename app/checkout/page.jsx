@@ -47,7 +47,7 @@ export default function CheckoutPage() {
   // Junior single-session-per-week packages — collect preferred session day.
   const requiresSessionDay = cart.some(
     (item) =>
-      item.id === 'junior-casual' || item.id === 'junior-term3-1x'
+      item.id === 'junior-casual' || item.id === 'junior-term4-1x'
   )
 
   const [form, setForm] = useState({
